@@ -9,31 +9,31 @@ import java.util.List;
 
 @Repository
 public class NoteRepository {
-    private final NoteMapper notemapper;
+    private final NoteMapper noteMapper;
 
-    public NoteRepository(NoteMapper notemapper) {
-        this.notemapper = notemapper;
+    public NoteRepository(NoteMapper noteMapper) {
+        this.noteMapper = noteMapper;
     }
 
     public List<Note> findAll() {
-        return notemapper.findAll();
+        return noteMapper.findAll();
     }
 
-    public int insertNote(Note note){
-        return notemapper.insert(note);
+    public int insertNote(Note note) {
+        return noteMapper.insert(note);
     }
 
-//    public Note findById(long id){
-//        return notemapper.findById(id);
-//    }
-
-    public boolean delete(long id){
-        return notemapper.delete(id) == 1;
+    public Note findById(long id) {
+        return noteMapper.findById(id);
     }
 
-    public Note update(Note note){
-        if(notemapper.update(note) == 0){
-//            throw new NoteNotFound(note.getId());
+    public boolean delete(long id) {
+        return noteMapper.delete(id) == 1;
+    }
+
+    public Note update(Note note) {
+        if (noteMapper.update(note) == 0) {
+            throw new NoteNotFound(note.getId());
         }
         return note;
     }
